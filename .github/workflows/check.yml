@@ -15,6 +15,15 @@ jobs:
     steps:
       - name: Get repository
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Show code version
+        run: |
+          echo "===== check_jobs.py ====="
+          grep -n "safe_header\|Checking YunoJuno" check_jobs.py || true
+          echo "===== end ====="
 
       - name: Run job checker
         env:
